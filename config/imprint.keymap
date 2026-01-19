@@ -14,25 +14,25 @@
 
         default_layer {
             bindings = <
-&kp EQUAL   &kp N1     &kp N2    &kp N3    &kp N4         &kp N5                   &kp N6     &kp N7     &kp N8     &kp N9    &kp N0    &kp MINUS
-&kp TAB     &kp Q      &kp W     &kp E     &kp R          &kp T                    &kp Y      &kp U      &kp I      &kp O     &kp P     &kp BSLH
-&kp ESCAPE  &kp A      &kp S     &kp D     &kp F          &kp G                    &kp H      &kp J      &kp K      &kp L     &kp SEMI  &kp SQT
-&kp LSHFT   &kp Z      &kp X     &kp C     &kp V          &kp B                    &kp N      &kp M      &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
-&trans      &kp GRAVE  &kp RGUI  &kp LALT  &kp EQUAL                                          &trans     &kp LBKT   &kp RBKT  &trans    &trans
-                                           &kp LCTRL      &kp F2   &mo 3           &kp GRAVE  &mo 3      &kp RCTRL
-                                           &kp BACKSPACE  &kp DEL  &kp RIGHT_GUI   &kp CAPS   &kp ENTER  &kp SPACE
+&kp EQUAL   &kp N1     &kp N2    &kp N3    &kp N4         &kp N5                    &kp N6     &kp N7         &kp N8     &kp N9    &kp N0    &kp MINUS
+&kp TAB     &kp Q      &kp W     &kp E     &kp R          &kp T                     &kp Y      &kp U          &kp I      &kp O     &kp P     &kp BSLH
+&kp ESCAPE  &kp A      &kp S     &kp D     &kp F          &kp G                     &kp H      &kp J          &kp K      &kp L     &kp SEMI  &kp SQT
+&kp LSHFT   &kp Z      &kp X     &kp C     &kp V          &kp B                     &kp N      &kp M          &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
+&trans      &kp GRAVE  &kp RGUI  &kp LALT  &kp EQUAL                                           &trans         &kp LBKT   &kp RBKT  &trans    &trans
+                                           &kp LCTRL      &kp F2   &kp RIGHT_GUI    &kp GRAVE  &kp RIGHT_ALT  &kp RCTRL
+                                           &kp BACKSPACE  &kp DEL  &mo 1            &kp CAPS   &kp ENTER      &kp SPACE
             >;
         };
 
         Numpad_Nav_Layer {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans    &trans    &trans     &trans  &trans
-&trans  &trans  &kp N7  &kp N8  &kp N9  &trans            &trans  &kp HOME  &kp UP    &kp END    &trans  &trans
-&trans  &trans  &kp N4  &kp N5  &kp N6  &trans            &trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans  &trans
-&trans  &trans  &kp N1  &kp N2  &kp N3  &trans            &trans  &trans    &trans    &trans     &trans  &trans
-&trans  &trans  &trans  &kp N0  &trans                            &trans    &trans    &trans     &trans  &trans
-                                &trans  &trans  &trans    &trans  &trans    &trans
-                                &trans  &trans  &trans    &trans  &trans    &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans    &trans    &trans  &trans     &trans  &trans
+&trans  &trans  &kp N7  &kp N8  &kp N9  &trans            &trans    &kp HOME  &kp UP  &kp END    &trans  &trans
+&trans  &trans  &kp N4  &kp N5  &kp N6  &trans            &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &trans  &trans
+&trans  &trans  &kp N1  &kp N2  &kp N3  &trans            &trans    &trans    &trans  &trans     &trans  &trans
+&trans  &trans  &trans  &kp N0  &trans                              &trans    &trans  &trans     &trans  &trans
+                                &trans  &trans  &trans    &trans    &trans    &trans
+                                &trans  &trans  &trans    &trans    &trans    &trans
             >;
         };
 
@@ -75,17 +75,19 @@
 };
 
 // Left hand trackball configuration - cursor mode
+
 &trackball_central_listener {
     // No input processors = default cursor speed
 };
 
 // Right hand trackball configuration - scroll mode
+
 &trackball_peripheral_listener {
     input-processors =
-        // Much slower scrolling (1/20 speed for very slow, precise scrolling)
+        // Much slower scrolling (1/20 speed for very slow, precise scrolling),
         <&zip_xy_scaler 1 20>,
-        // Convert movement to scroll events
+        // Convert movement to scroll events,
         <&zip_xy_to_scroll_mapper>,
-        // Invert vertical scrolling so the view moves with the trackball
+        // Invert vertical scrolling so the view moves with the trackball,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 };
