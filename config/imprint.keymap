@@ -18,7 +18,7 @@
 &kp TAB     &kp Q      &kp W     &kp E     &kp R          &kp T                     &kp Y     &kp U             &kp I      &kp O            &kp P     &kp BSLH
 &kp ESCAPE  &kp A      &kp S     &kp D     &kp F          &kp G                     &kp H     &kp J             &kp K      &kp L            &kp SEMI  &kp SQT
 &kp LSHFT   &kp Z      &kp X     &kp C     &kp V          &kp B                     &kp N     &kp M             &kp COMMA  &kp DOT          &kp FSLH  &kp RSHFT
-&trans      &kp GRAVE  &kp RGUI  &kp LALT  &kp EQUAL                                          &kp LEFT_BRACKET  &kp RBKT   &kp PRINTSCREEN  &trans    &trans
+&mo 2       &kp GRAVE  &kp RGUI  &kp LALT  &kp EQUAL                                          &kp LEFT_BRACKET  &kp RBKT   &kp PRINTSCREEN  &trans    &trans
                                            &kp LCTRL      &kp F2   &kp RIGHT_GUI    &tog 3    &kp RIGHT_ALT     &kp RCTRL
                                            &kp BACKSPACE  &kp DEL  &mo 1            &kp CAPS  &kp ENTER         &kp SPACE
             >;
@@ -38,20 +38,20 @@
 
         Keyboard_Control_Layer {
             bindings = <
-&bt BT_CLR   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4              &trans          &rgb_ug RGB_TOG  &rgb_ug RGB_EFF  &trans           &trans           &trans
-&sys_reset   &trans        &trans        &trans        &trans        &studio_unlock            &studio_unlock  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_SPI  &sys_reset
-&bootloader  &trans        &trans        &trans        &trans        &trans                    &trans          &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_SPD  &bootloader
-&to 5        &trans        &trans        &trans        &trans        &trans                    &trans          &trans           &trans           &trans           &trans           &to 5
-&to 5        &trans        &trans        &trans        &trans                                                  &trans           &trans           &trans           &trans           &to 5
-                                                       &trans        &trans          &trans    &trans          &trans           &trans
-                                                       &trans        &trans          &trans    &trans          &trans           &trans
+&bt BT_CLR   &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4              &trans          &rgb_ug RGB_TOG  &rgb_ug RGB_EFF  &trans           &trans           &trans
+&sys_reset   &bt BT_CLR_ALL  &trans        &trans        &trans        &studio_unlock            &studio_unlock  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_SPI  &sys_reset
+&bootloader  &trans          &trans        &trans        &trans        &trans                    &trans          &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_SPD  &bootloader
+&to 5        &trans          &trans        &trans        &trans        &trans                    &trans          &trans           &trans           &trans           &trans           &to 5
+&to 5        &trans          &trans        &trans        &trans                                                  &trans           &trans           &trans           &trans           &to 5
+                                                         &trans        &trans          &trans    &trans          &trans           &trans
+                                                         &trans        &trans          &trans    &trans          &trans           &trans
             >;
         };
 
         Auto_Mouse_Layer {
             bindings = <
-&trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans  &trans  &mo 4   &trans  &trans
+&trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans     &trans     &trans     &trans  &trans
+&trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans     &trans     &mo 4      &trans  &trans
 &trans  &trans  &mkp RCLK  &mkp MCLK  &mkp LCLK  &trans            &trans  &mkp LCLK  &mkp RCLK  &mkp MCLK  &trans  &trans
 &trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans     &trans     &trans     &trans  &trans
 &trans  &trans  &trans     &trans     &trans                               &trans     &trans     &trans     &trans  &trans
@@ -90,16 +90,18 @@
 
 &trackball_central_listener {
     input-processors =
-        // Auto-activate layer 3 (mouse buttons) for 3 seconds when trackball moves
+        // Auto-activate layer 3 (mouse buttons) for 3 seconds when trackball moves,
         <&zip_temp_layer 3 1500>;
-    
+
     // Disable auto-activation when on layer 1 (numpad/nav)
+
     nav_layer {
         layers = <1>;
         input-processors = <>;
     };
-    
+
     // Precision mode: slow down cursor by 2x when layer 4 is active
+
     precision {
         layers = <4>;
         input-processors = <&zip_xy_scaler 1 2>;
@@ -110,19 +112,20 @@
 
 &trackball_peripheral_listener {
     input-processors =
-        // Much slower scrolling (1/30 speed for very slow, precise scrolling)
+        // Much slower scrolling (1/30 speed for very slow, precise scrolling),
         <&zip_xy_scaler 1 30>,
-        // Convert movement to scroll events
+        // Convert movement to scroll events,
         <&zip_xy_to_scroll_mapper>,
-        // Invert vertical scrolling so the view moves with the trackball
+        // Invert vertical scrolling so the view moves with the trackball,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>,
-        // Auto-activate layer 3 (mouse buttons) for 3 seconds when trackball moves
+        // Auto-activate layer 3 (mouse buttons) for 3 seconds when trackball moves,
         <&zip_temp_layer 3 1500>;
-    
+
     // Disable auto-activation when on layer 1 (numpad/nav)
+
     nav_layer {
         layers = <1>;
-        input-processors = 
+        input-processors =
             <&zip_xy_scaler 1 30>,
             <&zip_xy_to_scroll_mapper>,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
