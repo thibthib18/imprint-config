@@ -93,12 +93,6 @@
         // Auto-activate layer 3 (mouse buttons) for 3 seconds when trackball moves
         <&zip_temp_layer 3 1500>;
     
-    // Disable auto-activation when on layer 1 (numpad/nav)
-    nav_layer {
-        layers = <1>;
-        input-processors = <>;
-    };
-    
     // Precision mode: slow down cursor by 2x when layer 4 is active
     precision {
         layers = <4>;
@@ -110,21 +104,12 @@
 
 &trackball_peripheral_listener {
     input-processors =
-        // Much slower scrolling (1/30 speed for very slow, precise scrolling)
+        // Much slower scrolling (1/20 speed for very slow, precise scrolling),,,,
         <&zip_xy_scaler 1 30>,
-        // Convert movement to scroll events
+        // Convert movement to scroll events,
         <&zip_xy_to_scroll_mapper>,
-        // Invert vertical scrolling so the view moves with the trackball
+        // Invert vertical scrolling so the view moves with the trackball,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>,
-        // Auto-activate layer 3 (mouse buttons) for 3 seconds when trackball moves
+        // Auto-activate layer 3 (mouse buttons) for 3 seconds when trackball moves,
         <&zip_temp_layer 3 1500>;
-    
-    // Disable auto-activation when on layer 1 (numpad/nav)
-    nav_layer {
-        layers = <1>;
-        input-processors = 
-            <&zip_xy_scaler 1 30>,
-            <&zip_xy_to_scroll_mapper>,
-            <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
-    };
 };
