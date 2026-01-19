@@ -79,7 +79,7 @@
 &trackball_central_listener {
     input-processors =
         // Auto-activate layer 3 (mouse buttons) for 3 seconds when trackball moves,
-        <&zip_temp_layer 3 3000>;
+        <&zip_temp_layer 3 1500>;
 };
 
 // Right hand trackball configuration - scroll mode with auto-activate mouse layer
@@ -93,5 +93,5 @@
         // Invert vertical scrolling so the view moves with the trackball,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>,
         // Auto-activate layer 3 (mouse buttons) for 3 seconds when trackball moves,
-        <&zip_temp_layer 3 3000>;
+        <&zip_temp_layer 3 1500>;
 };
