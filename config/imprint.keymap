@@ -50,6 +50,18 @@
 
         Auto_Mouse_Layer {
             bindings = <
+&trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans     &trans     &mo 5      &trans  &trans
+&trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans     &trans     &trans     &trans  &trans
+&trans  &trans  &mkp RCLK  &mkp MCLK  &mkp LCLK  &trans            &trans  &mkp LCLK  &mkp RCLK  &mkp MCLK  &trans  &trans
+&trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans     &trans     &trans     &trans  &trans
+&trans  &trans  &trans     &trans     &trans                               &trans     &trans     &trans     &trans  &trans
+                                      &trans     &trans  &trans    &trans  &trans     &trans
+                                      &trans     &trans  &trans    &trans  &trans     &trans
+            >;
+        };
+
+        Precision_Mouse_Layer {
+            bindings = <
 &trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans     &trans     &trans     &trans  &trans
 &trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans     &trans     &trans     &trans  &trans
 &trans  &trans  &mkp RCLK  &mkp MCLK  &mkp LCLK  &trans            &trans  &mkp LCLK  &mkp RCLK  &mkp MCLK  &trans  &trans
@@ -78,8 +90,14 @@
 
 &trackball_central_listener {
     input-processors =
-        // Auto-activate layer 3 (mouse buttons) for 3 seconds when trackball moves,
+        // Auto-activate layer 3 (mouse buttons) for 3 seconds when trackball moves
         <&zip_temp_layer 3 1500>;
+    
+    // Precision mode: slow down cursor by 4x when layer 5 is active
+    precision {
+        layers = <5>;
+        input-processors = <&zip_xy_scaler 1 4>;
+    };
 };
 
 // Right hand trackball configuration - scroll mode with auto-activate mouse layer
