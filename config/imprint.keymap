@@ -91,7 +91,7 @@
 &trackball_central_listener {
     input-processors =
         // Auto-activate layer 3 (mouse buttons) for 3 seconds when trackball moves,,,,,
-        <&zip_temp_layer 3 1500>;
+        <&zip_temp_layer 3 1000>;
 
     // Precision mode: slow down cursor by 2x when layer 4 is active
 
@@ -112,5 +112,5 @@
         // Invert vertical scrolling so the view moves with the trackball,,,,,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>,
         // Auto-activate layer 3 (mouse buttons) for 3 seconds when trackball moves,,,,,,
-        <&zip_temp_layer 3 1500>;
+        <&zip_temp_layer 3 1000>;
 };
