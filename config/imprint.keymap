@@ -90,15 +90,14 @@
 
 &trackball_central_listener {
     input-processors =
-        // Default slower speed for precision (2x slower)
-        <&zip_xy_scaler 1 2>,
-        // Auto-activate layer 3 (mouse buttons) for 3 seconds when trackball moves
+        // Auto-activate layer 3 (mouse buttons) for 3 seconds when trackball moves,,,,,,
         <&zip_temp_layer 3 1000>;
 
-    // Fast mode: normal speed (remove slowdown) when layer 4 is active
-    fast_mode {
+    // Precision mode: slow down cursor by 2x when layer 4 is active
+
+    precision {
         layers = <4>;
-        input-processors = <>;
+        input-processors = <&zip_xy_scaler 1 2>;
     };
 };
 
