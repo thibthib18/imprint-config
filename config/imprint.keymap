@@ -50,25 +50,25 @@
 
         Auto_Mouse_Layer {
             bindings = <
-&trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans     &trans     &trans     &trans  &trans
-&trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans     &trans     &mo 4      &trans  &trans
-&trans  &trans  &mkp RCLK  &mkp MCLK  &mkp LCLK  &trans            &trans  &mkp LCLK  &mkp RCLK  &mkp MCLK  &trans  &trans
-&trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans     &trans     &trans     &trans  &trans
-&trans  &trans  &trans     &trans     &trans                               &trans     &trans     &trans     &trans  &trans
-                                      &trans     &trans  &trans    &trans  &trans     &trans
-                                      &trans     &trans  &trans    &trans  &trans     &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans     &trans     &trans     &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans     &trans     &mo 4      &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &mkp LCLK  &mkp RCLK  &mkp MCLK  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans     &trans     &trans     &trans  &trans
+&trans  &trans  &trans  &trans  &trans                            &trans     &trans     &trans     &trans  &trans
+                                &trans  &trans  &trans    &trans  &trans     &trans
+                                &trans  &trans  &trans    &trans  &trans     &trans
             >;
         };
 
         Precision_Mouse_Layer {
             bindings = <
-&trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans     &trans     &trans     &trans  &trans
-&trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans     &trans     &trans     &trans  &trans
-&trans  &trans  &mkp RCLK  &mkp MCLK  &mkp LCLK  &trans            &trans  &mkp LCLK  &mkp RCLK  &mkp MCLK  &trans  &trans
-&trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans     &trans     &trans     &trans  &trans
-&trans  &trans  &trans     &trans     &trans                               &trans     &trans     &trans     &trans  &trans
-                                      &trans     &trans  &trans    &trans  &trans     &trans
-                                      &trans     &trans  &trans    &trans  &trans     &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans     &trans     &trans     &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans     &trans     &trans     &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &mkp LCLK  &mkp RCLK  &mkp MCLK  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans     &trans     &trans     &trans  &trans
+&trans  &trans  &trans  &trans  &trans                            &trans     &trans     &trans     &trans  &trans
+                                &trans  &trans  &trans    &trans  &trans     &trans
+                                &trans  &trans  &trans    &trans  &trans     &trans
             >;
         };
 
@@ -90,7 +90,7 @@
 
 &trackball_central_listener {
     input-processors =
-        // Auto-activate layer 3 (mouse buttons) for 3 seconds when trackball moves,,,,,
+        // Auto-activate layer 3 (mouse buttons) for 3 seconds when trackball moves,,,,,,
         <&zip_temp_layer 3 1000>;
 
     // Precision mode: slow down cursor by 2x when layer 4 is active
@@ -105,12 +105,12 @@
 
 &trackball_peripheral_listener {
     input-processors =
-        // Much slower scrolling (1/20 speed for very slow, precise scrolling),,,,,,,,,
+        // Much slower scrolling (1/20 speed for very slow, precise scrolling),,,,,,,,,,
         <&zip_xy_scaler 1 30>,
-        // Convert movement to scroll events,,,,,,
+        // Convert movement to scroll events,,,,,,,
         <&zip_xy_to_scroll_mapper>,
-        // Invert vertical scrolling so the view moves with the trackball,,,,,,
+        // Invert vertical scrolling so the view moves with the trackball,,,,,,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>,
-        // Auto-activate layer 3 (mouse buttons) for 3 seconds when trackball moves,,,,,,
+        // Auto-activate layer 3 (mouse buttons) for 3 seconds when trackball moves,,,,,,,
         <&zip_temp_layer 3 1000>;
 };
