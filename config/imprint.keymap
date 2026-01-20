@@ -98,7 +98,7 @@
     // Fast mode: normal speed (remove slowdown) when layer 4 is active
     fast_mode {
         layers = <4>;
-        input-processors = <>;
+        input-processors = <&zip_temp_layer 3 1000>;
     };
 };
 
