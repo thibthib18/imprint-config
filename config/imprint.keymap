@@ -104,7 +104,7 @@
     };
 };
 
-// Right hand trackball configuration - scroll mode with auto-activate mouse layer
+// Right hand trackball configuration - scroll mode (NO layer activation to reduce BLE load)
 
 &trackball_peripheral_listener {
     input-processors =
@@ -113,7 +113,6 @@
         // Convert movement to scroll events
         <&zip_xy_to_scroll_mapper>,
         // Invert vertical scrolling so the view moves with the trackball
-        <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>,
-        // Auto-activate layer 3 (mouse buttons) for 3 seconds when trackball moves
-        <&zip_temp_layer 3 1000>;
+        <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
+        // REMOVED: zip_temp_layer from peripheral to reduce split BLE traffic
 };
