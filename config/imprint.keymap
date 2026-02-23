@@ -19,7 +19,7 @@
 &kp ESCAPE  &kp A      &kp S     &kp D     &kp F          &kp G                     &kp H     &kp J             &kp K      &kp L            &kp SEMI  &kp SQT
 &kp LSHFT   &kp Z      &kp X     &kp C     &kp V          &kp B                     &kp N     &kp M             &kp COMMA  &kp DOT          &kp FSLH  &kp RSHFT
 &mo 2       &kp GRAVE  &kp RGUI  &kp LALT  &kp EQUAL                                          &kp LEFT_BRACKET  &kp RBKT   &kp PRINTSCREEN  &trans    &trans
-                                           &kp LCTRL      &kp F2   &kp RIGHT_GUI    &mo 3     &kp RIGHT_ALT     &kp RCTRL
+                                           &kp LCTRL      &kp F2   &kp RIGHT_GUI    &kp F7    &kp RIGHT_ALT     &kp RCTRL
                                            &kp BACKSPACE  &kp DEL  &mo 1            &kp CAPS  &kp ENTER         &kp SPACE
             >;
         };
@@ -90,17 +90,16 @@
 
 &trackball_central_listener {
     input-processors =
-        // Default slower speed for precision (2x slower)
+        // Default slower speed for precision (2x slower),
         <&zip_xy_scaler 1 2>,
-        // Auto-activate layer 3 (mouse buttons) for 3 seconds when trackball moves
+        // Auto-activate layer 3 (mouse buttons) for 3 seconds when trackball moves,
         <&zip_temp_layer 3 1000>;
 
     // Extra precision mode: even slower (4x slower) when layer 4 is active
+
     precision_mode {
         layers = <4>;
-        input-processors = 
-            <&zip_xy_scaler 1 4>,
-            <&zip_temp_layer 3 1000>;
+        input-processors = <&zip_xy_scaler 1 4>, <&zip_temp_layer 3 1000>;
     };
 };
 
@@ -108,11 +107,12 @@
 
 &trackball_peripheral_listener {
     input-processors =
-        // Much slower scrolling (1/30 speed for very slow, precise scrolling)
+        // Much slower scrolling (1/30 speed for very slow, precise scrolling),
         <&zip_xy_scaler 1 30>,
-        // Convert movement to scroll events
+        // Convert movement to scroll events,
         <&zip_xy_to_scroll_mapper>,
-        // Invert vertical scrolling so the view moves with the trackball
+        // Invert vertical scrolling so the view moves with the trackball,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
-        // REMOVED: zip_temp_layer from peripheral to reduce split BLE traffic
+
+    // REMOVED: zip_temp_layer from peripheral to reduce split BLE traffic
 };
