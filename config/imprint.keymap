@@ -26,13 +26,13 @@
 
         Numpad_Nav_Layer {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans            &trans    &trans    &trans  &trans     &trans  &trans
-&trans  &trans  &kp N7  &kp N8  &kp N9  &trans            &trans    &kp HOME  &kp UP  &kp END    &trans  &trans
-&trans  &trans  &kp N4  &kp N5  &kp N6  &trans            &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &trans  &trans
-&trans  &trans  &kp N1  &kp N2  &kp N3  &trans            &trans    &trans    &trans  &trans     &trans  &trans
-&trans  &trans  &trans  &kp N0  &trans                              &trans    &trans  &trans     &trans  &trans
-                                &trans  &trans  &trans    &trans    &trans    &trans
-                                &trans  &trans  &trans    &trans    &trans    &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans             &trans           &trans            &trans          &trans      &trans
+&trans  &trans  &kp N7  &kp N8  &kp N9  &trans            &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kp K_PLAY_PAUSE  &kp K_PREVIOUS  &kp C_NEXT  &trans
+&trans  &trans  &kp N4  &kp N5  &kp N6  &trans            &kp LEFT           &kp DOWN         &kp UP            &kp RIGHT       &trans      &trans
+&trans  &trans  &kp N1  &kp N2  &kp N3  &trans            &trans             &trans           &trans            &trans          &trans      &trans
+&trans  &trans  &trans  &kp N0  &trans                                       &trans           &trans            &trans          &trans      &trans
+                                &trans  &trans  &trans    &trans             &trans           &trans
+                                &trans  &trans  &trans    &trans             &trans           &trans
             >;
         };
 
@@ -90,9 +90,9 @@
 
 &trackball_central_listener {
     input-processors =
-        // Default slower speed for precision (2x slower),
+        // Default slower speed for precision (2x slower),,
         <&zip_xy_scaler 1 2>,
-        // Auto-activate layer 3 (mouse buttons) for 3 seconds when trackball moves,
+        // Auto-activate layer 3 (mouse buttons) for 3 seconds when trackball moves,,
         <&zip_temp_layer 3 1000>;
 
     // Extra precision mode: even slower (4x slower) when layer 4 is active
@@ -107,11 +107,11 @@
 
 &trackball_peripheral_listener {
     input-processors =
-        // Much slower scrolling (1/30 speed for very slow, precise scrolling),
+        // Much slower scrolling (1/30 speed for very slow, precise scrolling),,
         <&zip_xy_scaler 1 30>,
-        // Convert movement to scroll events,
+        // Convert movement to scroll events,,
         <&zip_xy_to_scroll_mapper>,
-        // Invert vertical scrolling so the view moves with the trackball,
+        // Invert vertical scrolling so the view moves with the trackball,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 
     // REMOVED: zip_temp_layer from peripheral to reduce split BLE traffic
